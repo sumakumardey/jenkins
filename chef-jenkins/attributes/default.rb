@@ -101,7 +101,7 @@ default[:jenkins][:node][:idle_delay] = 1
 
 #"Node Properties"
 #[x] "Environment Variables"
-default[:jenkins][:node][:env] = nil
+default[:jenkins][:node][:env] = "nginx"
 
 default[:jenkins][:node][:user] = "jenkins-node"
 
