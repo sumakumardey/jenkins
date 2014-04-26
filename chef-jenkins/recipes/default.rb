@@ -40,6 +40,15 @@ directory "#{node[:jenkins][:server][:home]}/.ssh" do
   group node[:jenkins][:server][:group]
 end
 
+execute "apt-get-update-periodic" do
+  command "apt-get update"
+  ignore_failure true
+  only_if do
+    File.exists?('/var/lib/apt/periodic/update-success-stamp') &&
+    File.mtime('/var/lib/apt/periodic/update-success-stamp') < Time.now - 86400
+  end
+end
+
 execute "ssh-keygen -f #{pkey} -N ''" do
   user  node[:jenkins][:server][:user]
   group node[:jenkins][:server][:group]
