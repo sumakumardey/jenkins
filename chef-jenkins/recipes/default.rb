@@ -193,6 +193,7 @@ end
 if node.platform == "ubuntu"
   execute "setup-jenkins" do
     command "echo w00t"
+    command "apt-get update -y"
     notifies :stop, "service[jenkins]", :immediately
     notifies :create, "ruby_block[netstat]", :immediately #wait a moment for the port to be released
     notifies :install, "package[jenkins]", :immediately
