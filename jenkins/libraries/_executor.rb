@@ -49,8 +49,8 @@ module Jenkins
     #
     def initialize(options = {})
       @options = {
-        cli:  '/usr/share/jenkins/cli/java/cli.jar',
-        java: 'java'
+        cli =>  '/usr/share/jenkins/cli/java/cli.jar',
+        java => 'java'
       }.merge(options)
     end
 
