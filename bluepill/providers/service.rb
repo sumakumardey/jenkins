@@ -124,6 +124,9 @@ def load_current_resource
   determine_current_status!
 
   @current_resource
+  rescue Chef::Exceptions::Exec
+    @bp.running(false)
+    nil
 end
 
 protected
